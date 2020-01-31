@@ -2,7 +2,7 @@ import { Phone } from '../models/Phone';
 import { PhoneActions, PhoneActionTypes } from '../actions/phone.actions';
 
 export interface PhoneState {
-  readonly phones: Phone[]; // TODO: use record instead to easy access.
+  readonly phones: Phone[];
   readonly loading: boolean;
   readonly errorMessage?: string;
 }

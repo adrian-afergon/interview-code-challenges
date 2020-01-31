@@ -48,4 +48,4 @@ for example a spinner. However, It's not working good with `redux` for the momen
 ### Test
 In some case we want to use a clean store for each test, in other hand, sometimes we want to use a dirty store to check 
 how the state change. To make it possible, I create a [render-redux](./web/src/testHelpers/render-redux.tsx) to make
-this step easier. 
+this step easier.
