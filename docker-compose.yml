@@ -4,7 +4,7 @@ services:
     image: williamyeh/json-server
     command: --watch db.json
     ports:
-      - "3000:3000"
+      - "8080:3000"
     volumes:
       - ./react/phone-catalogue/phones.json:/data/db.json
 
@@ -15,4 +15,4 @@ services:
       args:
         NODE_ENV: production
     ports:
-      - "8080:3000"
+      - "3000:3000"
