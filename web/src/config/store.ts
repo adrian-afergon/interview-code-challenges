@@ -5,12 +5,12 @@ import thunk from 'redux-thunk';
 import reducer from './reducer';
 
 const getMiddleware = () => {
-    if (process.env.NODE_ENV === 'production') {
-        return applyMiddleware(thunk);
-    } else {
-        // Enable additional logging in non-production environments.
-        return applyMiddleware(thunk, createLogger());
-    }
+  if (process.env.NODE_ENV === 'production') {
+    return applyMiddleware(thunk);
+  } else {
+    // Enable additional logging in non-production environments.
+    return applyMiddleware(thunk, createLogger());
+  }
 };
 
 export const store = createStore(reducer, composeWithDevTools(getMiddleware()));

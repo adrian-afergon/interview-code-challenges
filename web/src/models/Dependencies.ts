@@ -1,5 +1,5 @@
-import {PhoneRepository} from "../repositories/PhoneRepository";
+import { PhoneRepository } from '../repositories/PhoneRepository';
 
 export interface ApplicationDependencies {
-    phoneRepository: PhoneRepository
+  phoneRepository: PhoneRepository;
 }

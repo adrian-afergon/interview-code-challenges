@@ -1,33 +1,28 @@
-import * as React from "react";
-import {applyMiddleware, Store} from "redux";
-import {render, RenderResult} from "@testing-library/react";
-import {Provider} from "react-redux";
+import * as React from 'react';
+import { applyMiddleware, Store } from 'redux';
+import { render, RenderResult } from '@testing-library/react';
+import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import reducer from "../config/reducer";
-import thunk from "redux-thunk";
-import {composeWithDevTools} from "redux-devtools-extension/developmentOnly";
-import {BrowserRouter} from "react-router-dom";
+import reducer from '../config/reducer';
+import thunk from 'redux-thunk';
+import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
+import { BrowserRouter } from 'react-router-dom';
 
 const getTestMiddleware = () => {
-    return applyMiddleware(thunk);
+  return applyMiddleware(thunk);
 };
 
 export const renderWithReduxAndRouter = (
-    component: JSX.Element,
-    store: Store = createStore(reducer, composeWithDevTools(getTestMiddleware()))
-): RenderResult => render(
+  component: JSX.Element,
+  store: Store = createStore(reducer, composeWithDevTools(getTestMiddleware())),
+): RenderResult =>
+  render(
     <Provider store={store}>
-        <BrowserRouter>
-            {component}
-        </BrowserRouter>
-    </Provider>
-);
+      <BrowserRouter>{component}</BrowserRouter>
+    </Provider>,
+  );
 
 export const renderWithRedux = (
-    component: JSX.Element,
-    store: Store = createStore(reducer, composeWithDevTools(getTestMiddleware()))
-): RenderResult => render(
-    <Provider store={store}>
-        {component}
-    </Provider>
-);
+  component: JSX.Element,
+  store: Store = createStore(reducer, composeWithDevTools(getTestMiddleware())),
+): RenderResult => render(<Provider store={store}>{component}</Provider>);
