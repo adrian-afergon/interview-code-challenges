@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { render, RenderResult } from '@testing-library/react';
-import { Phones} from './';
+import {Phones} from './';
 import {phoneRepository, PhoneRepository} from "../../repositories/PhoneRepository";
 import {Phone} from "../../models/Phone";
 import {buildPhone} from "../../testHelpers/build-phone";
+import {PhonesMessages} from "./Phones";
 
 describe('Phones', () => {
 
@@ -20,17 +21,18 @@ describe('Phones', () => {
         <Phones phoneRepository={phoneRepositoryMock}/>,
     );
 
-    expect(renderResult.queryByText('Sorry, the list is empty')).toBeTruthy();
+    expect(renderResult.queryByText(PhonesMessages.EMPTY_LIST)).toBeTruthy();
   });
 
   it('display an error when list of phones can\'t be retrieved', function () {
-    phoneRepositoryMock.getPhones = jest.fn(() => Promise.reject('Connection refused'));
+    const errorMessage = 'Connection refused';
+    phoneRepositoryMock.getPhones = jest.fn(() => Promise.reject(errorMessage));
 
     const renderResult: RenderResult = render(
         <Phones phoneRepository={phoneRepositoryMock}/>,
     );
 
-    expect(renderResult.queryByText('Connection refused')).toBeTruthy();
+    expect(renderResult.queryByText(errorMessage)).toBeTruthy();
   });
 
   it('display the list of phones', () => {
