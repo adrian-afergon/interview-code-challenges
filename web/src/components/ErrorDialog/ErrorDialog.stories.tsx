@@ -4,5 +4,7 @@ import {ErrorDialog} from './ErrorDialog';
 
 storiesOf('ErrorDialog', module)
   .add('with text', () => (
-  <ErrorDialog />
+      <ErrorDialog>
+          This is an error message to be displayed!
+      </ErrorDialog>
 ));

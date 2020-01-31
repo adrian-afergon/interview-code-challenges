@@ -1,9 +1,9 @@
 import * as React from 'react';
 import './ErrorDialog.scss';
 
-export const ErrorDialog: React.FC<{}> = () => (
+export const ErrorDialog: React.FC = ({children}) => (
   <div className="ErrorDialog">
-    Hello from ErrorDialog!
+    {children}
   </div>
 );
 

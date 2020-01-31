@@ -4,9 +4,11 @@ import { ErrorDialog} from './';
 
 describe('ErrorDialog', () => {
   it('should display the default message', () => {
+    const message = 'Irrelevant message';
+
     const renderResult: RenderResult = render(
-      <ErrorDialog/>,
+        <ErrorDialog>{message}</ErrorDialog>,
     );
-    expect(renderResult.queryByText('Hello from ErrorDialog!')).toBeTruthy();
+    expect(renderResult.queryByText(message)).toBeTruthy();
   });
 });
