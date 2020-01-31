@@ -34,5 +34,5 @@ One important point if that we can inject the object to data access in our compo
 it easily using mocks and have a relative coverage.
 
 Another point is use mappers in the data fetch by the api and returned by our repository. The idea is in case that the 
-data gived by the API change, it can be handled in our Repository and we don't have to propagate the change to the other 
+data gave by the API change, it can be handled in our Repository and we don't have to propagate the change to the other 
 layers.
