@@ -8,7 +8,7 @@ import {fetchGetPhones} from "../../thunks/phone.thunk";
 import {Spinner} from "../../components/Spinner";
 import {ErrorDialog} from "../../components/ErrorDialog";
 import {PhoneItem} from "../../components/PhoneItem";
-import {selectPhone} from "../../actions/phone.actions";
+import {Link} from "react-router-dom";
 
 interface PhonesProps {
   phoneRepository: PhoneRepository
@@ -23,7 +23,6 @@ export const Phones: React.FC<PhonesProps> = ({phoneRepository}) => {
     const phones: Phone[] = Redux.useSelector((state: RootApplicationState) => state.phones.phones);
     const loading: boolean = Redux.useSelector((state: RootApplicationState) => state.phones.loading);
     const errorMessage: string | undefined = Redux.useSelector((state: RootApplicationState) => state.phones.errorMessage);
-    const handleClick = (phoneId: number) => dispatch(selectPhone(phoneId));
 
     const dispatch = Redux.useDispatch();
 
@@ -34,9 +33,12 @@ export const Phones: React.FC<PhonesProps> = ({phoneRepository}) => {
     return (
         <div className="Phones">
             {loading && <Spinner />}
-            {errorMessage && (<>{errorMessage} <ErrorDialog>{errorMessage}</ErrorDialog></>)}
+            {errorMessage && (<ErrorDialog>{errorMessage}</ErrorDialog>)}
             {phones && phones.length > 0 ?
-                phones.map((phone) => <PhoneItem key={phone.id} phone={phone} onClick={handleClick} />) :
+                phones.map((phone) =>
+                <Link to={`phones/${phone.id}`} key={phone.id}>
+                    <PhoneItem  phone={phone} />
+                </Link>) :
                 PhonesMessages.EMPTY_LIST
             }
         </div>

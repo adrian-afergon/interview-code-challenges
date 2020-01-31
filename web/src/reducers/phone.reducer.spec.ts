@@ -1,5 +1,5 @@
 import reducer, {PhoneState} from './phone.reducer';
-import {getPhones, getPhonesFulfilled, getPhonesRejected, selectPhone} from "../actions/phone.actions";
+import {getPhones, getPhonesFulfilled, getPhonesRejected} from "../actions/phone.actions";
 import {buildPhone} from "../testHelpers/build-phone";
 
 describe('Phone reducer', function () {
@@ -87,29 +87,12 @@ describe('Phone reducer', function () {
         });
     });
 
-
-    describe('Select phone', function () {
-        it('select a phone', () => {
-            const initialState = createState({loading: true});
-            const expectedSelectedPhone = 1;
-
-            const updatedState = reducer(initialState, selectPhone(expectedSelectedPhone));
-
-            expect(updatedState).toEqual({
-                ...initialState,
-                selectedPhone: expectedSelectedPhone
-            });
-        });
-    });
-
     const createState = ({
         loading = false,
         phones= [],
-        selectedPhone = 0,
         errorMessage
     }: Partial<PhoneState>): PhoneState => ({
         errorMessage,
-        selectedPhone,
         phones,
         loading
     })

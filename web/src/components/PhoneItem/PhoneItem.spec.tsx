@@ -15,25 +15,11 @@ describe('PhoneItem', () => {
     });
 
     const renderResult: RenderResult = render(
-      <PhoneItem phone={aPhone} onClick={jest.fn()}/>,
+      <PhoneItem phone={aPhone} />,
     );
     expect(renderResult.queryByText(aPhone.name)).toBeTruthy();
     expect(renderResult.queryByText(aPhone.price.toString())).toBeTruthy();
     expect(renderResult.queryByText(aPhone.manufacturer)).toBeTruthy();
-  });
-
-  it('call an event when is clicked', async () => {
-    const clickFunction = jest.fn();
-    const aPhone = buildPhone({
-      id: 53,
-    });
-
-    const renderResult: RenderResult = render(
-        <PhoneItem phone={aPhone} onClick={clickFunction}/>,
-    );
-    fireEvent.click(await renderResult.findByRole(PhoneItemRole));
-
-    expect(clickFunction).toHaveBeenCalledWith(aPhone.id);
   });
 
 });

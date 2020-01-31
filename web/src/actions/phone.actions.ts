@@ -4,7 +4,6 @@ export enum PhoneActionTypes {
     GET_PHONES = 'react-redux-boilerplate/phones/GET_PHONE',
     GET_PHONES_FULFILLED = 'react-redux-boilerplate/phones/GET_PHONE_FULFILLED',
     GET_PHONES_REJECTED = 'react-redux-boilerplate/phones/GET_PHONE_REJECTED',
-    SELECT_PHONE = 'react-redux-boilerplate/phones/SELECT_PHONE',
 }
 
 export const getPhones = () => ({
@@ -24,15 +23,7 @@ export const getPhonesRejected = (errorMessage: string) => ({
 }) as const;
 export type GetPhonesRejectedAction = ReturnType<typeof getPhonesRejected>;
 
-export const selectPhone = (phoneId: number) => ({
-    type: PhoneActionTypes.SELECT_PHONE,
-    phoneId,
-}) as const;
-
-export type SelectPhoneAction = ReturnType<typeof selectPhone>;
-
 export type PhoneActions =
     | GetPhonesAction
     | GetPhonesFulfilledAction
     | GetPhonesRejectedAction
-    | SelectPhoneAction;

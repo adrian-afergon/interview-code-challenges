@@ -6,8 +6,9 @@ import { createStore } from 'redux';
 import reducer from "../config/reducer";
 import thunk from "redux-thunk";
 import {composeWithDevTools} from "redux-devtools-extension/developmentOnly";
+import {BrowserRouter} from "react-router-dom";
 
-export const getTestMiddleware = () => {
+const getTestMiddleware = () => {
     return applyMiddleware(thunk);
 };
 
@@ -16,6 +17,8 @@ export const renderWithRedux = (
     store: Store = createStore(reducer, composeWithDevTools(getTestMiddleware()))
 ): RenderResult => render(
     <Provider store={store}>
-        {component}
+        <BrowserRouter>
+            {component}
+        </BrowserRouter>
     </Provider>
 );
