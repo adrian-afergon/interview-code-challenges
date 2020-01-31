@@ -1,14 +1,11 @@
 import puppeteer from 'puppeteer';
+import {Config} from './config'
 
 describe('Application', () => {
 
     let browser: puppeteer.Browser;
     let page: puppeteer.Page;
     let skippedTest = false;
-
-    const e2eTest = (fn: any) => {
-        return skippedTest ? () => { console.log('Error'); } : fn();
-    };
 
     beforeEach(async () => {
         browser = await puppeteer.launch({
@@ -25,32 +22,25 @@ describe('Application', () => {
         });
 
         try {
-            await page.goto('http://localhost:3000/');
+            await page.goto(Config.API_URL);
         } catch (error) {
             console.error('Application is down and could not be started');
             skippedTest = true;
             throw new Error('Application is down and could not be started');
         }
+        await page.waitForSelector('.App');
     });
     afterEach(async () => {
         await browser.close();
     });
 
-    it('should have a browser opened', e2eTest(() => {
-       expect(skippedTest).toBe(false);
-    }));
+    xit('should display the phones', async () => {
+        const html = await page.$eval('.Phones', (e: any) => e.innerHTML);
+        expect(html).toBe('List of phones');
+    });
 
-    it('should open the application', e2eTest(async () => {
-        await page.waitForSelector('.App');
+    xit('should display the selected phone', function () {
 
-        const html = await page.$eval('.App-link', (e: any) => e.innerHTML);
-        expect(html).toBe('Learn React');
-    }));
+    });
 
-    it('should open the application 2', e2eTest(async () => {
-        await page.waitForSelector('.App');
-
-        const html = await page.$eval('.App-link', (e: any) => e.innerHTML);
-        expect(html).toBe('Learn React');
-    }));
 });
