@@ -7,3 +7,10 @@ services:
       - "3000:3000"
     volumes:
       - ./react/phone-catalogue/phones.json:/data/db.json
+
+  web:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    ports:
+      - "8080:3000"
