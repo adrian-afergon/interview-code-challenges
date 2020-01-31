@@ -44,3 +44,8 @@ Is a good know lib recommended by `redux team`.
 In the current react version, they have an experimental feature called `Suspense` to handle asynchronous code and display
 for example a spinner. However, It's not working good with `redux` for the moment:
 [Reference to the issue](https://github.com/facebook/react/issues/15201#issuecomment-476792529)  
+
+### Test
+In some case we want to use a clean store for each test, in other hand, sometimes we want to use a dirty store to check 
+how the state change. To make it possible, I create a [render-redux](./web/src/testHelpers/render-redux.tsx) to make
+this step easier. 

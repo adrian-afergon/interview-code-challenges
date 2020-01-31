@@ -32,8 +32,11 @@ export const Phones: React.FC<PhonesProps> = ({phoneRepository}) => {
     return (
         <div className="Phones">
             {loading && <Spinner />}
-            {errorMessage && <ErrorDialog />}
-            {phones ? phones.map((phone) => <PhoneItem />) : PhonesMessages.EMPTY_LIST}
+            {errorMessage && (<>{errorMessage} <ErrorDialog>{errorMessage}</ErrorDialog></>)}
+            {phones && phones.length > 0 ?
+                phones.map((phone) => <PhoneItem key={phone.id} phone={phone}/>) :
+                PhonesMessages.EMPTY_LIST
+            }
         </div>
     )
 };
