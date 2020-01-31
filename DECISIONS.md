@@ -10,8 +10,29 @@ The purpose is to work with a set of tools that help me to improve the developme
 configurations or doing repetitive work.
 
 For example:
-- Storybook to dessing components out of the box
+- Storybook to design components out of the box
 - Jest to test components
 - Typescript for type components 
 - Hygen to generate components structure folder, with test, sass files and stories. 
 
+### Patterns
+
+In fact to apply an architecture, I decide to apply Higher Order Component. In this case, only the
+component called in the top of the tree have the knowledge about redux or dependencies that we will use.
+
+The children will receive by props the information to display or a function to execute when an event happen.
+
+By other hand, we will use a layer structure. We can split the application in tree layers:
+- View (React components)
+- Domain
+- Data access (Repository to fetch data)
+
+However in this case, we don't have a custom domain layer, so we can ignore this layer at the moment and 
+postpone it to use in the future if we will need.
+
+One important point if that we can inject the object to data access in our components. In the test we can replace 
+it easily using mocks and have a relative coverage.
+
+Another point is use mappers in the data fetch by the api and returned by our repository. The idea is in case that the 
+data gived by the API change, it can be handled in our Repository and we don't have to propagate the change to the other 
+layers.
