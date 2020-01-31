@@ -2,10 +2,10 @@ import {Phone} from "../models/Phone";
 import {PhoneActions, PhoneActionTypes} from "../actions/phone.actions";
 
 export interface PhoneState {
-    phones: Phone[]; // TODO: use record instead to easy access.
-    selectedPhone: number;
-    loading: boolean;
-    errorMessage?: string;
+    readonly phones: Phone[]; // TODO: use record instead to easy access.
+    readonly selectedPhone: number;
+    readonly loading: boolean;
+    readonly errorMessage?: string;
 }
 
 const initialPhoneState = {
