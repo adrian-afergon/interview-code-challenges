@@ -48,9 +48,11 @@
     ]
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^5.3.9",
     "@storybook/react": "^5.3.9",
     "@testing-library/react": "^9.4.0",
     "@types/puppeteer": "^2.0.0",
+    "@types/storybook__addon-actions": "^5.2.1",
     "awesome-typescript-loader": "^5.2.1",
     "hygen": "^5.0.3",
     "prettier": "^1.19.1",
