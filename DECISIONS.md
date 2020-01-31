@@ -36,3 +36,11 @@ it easily using mocks and have a relative coverage.
 Another point is use mappers in the data fetch by the api and returned by our repository. The idea is in case that the 
 data gave by the API change, it can be handled in our Repository and we don't have to propagate the change to the other 
 layers.
+
+### Redux-thunk
+An easy way to handle asynchronous actions and side effects is use libraries to manage it. In this case I use redux-thunk.
+Is a good know lib recommended by `redux team`.
+
+In the current react version, they have an experimental feature called `Suspense` to handle asynchronous code and display
+for example a spinner. However, It's not working good with `redux` for the moment:
+[Reference to the issue](https://github.com/facebook/react/issues/15201#issuecomment-476792529)  
