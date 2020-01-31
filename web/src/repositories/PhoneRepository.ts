@@ -1,5 +1,6 @@
 import axios, {AxiosResponse} from 'axios';
 import {Phone} from "../models/Phone";
+import {Constants} from "../.env/environment";
 
 type PhoneDTO = Phone;
 
@@ -16,7 +17,7 @@ export const phoneRepository: PhoneRepository = {
     getPhones: async () => {
         try {
             const response: AxiosResponse = await axios.request<ServerResponse>({
-                url: 'http://localhost:3000/phones',
+                url: `${Constants.API_URL}/phones`,
             });
             return response.data.map(mapPhoneDTO);
         } catch (error) {
