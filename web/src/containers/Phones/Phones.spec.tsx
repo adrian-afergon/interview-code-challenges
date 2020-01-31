@@ -1,12 +1,15 @@
 import * as React from 'react';
-import { RenderResult } from '@testing-library/react';
+import { fireEvent, RenderResult } from '@testing-library/react';
 import {Phones} from './';
 import {phoneRepository, PhoneRepository} from "../../repositories/PhoneRepository";
 import {Phone} from "../../models/Phone";
 import {buildPhone} from "../../testHelpers/build-phone";
 import {PhonesMessages} from "./Phones";
 import {PhoneItemRole} from "../../components/PhoneItem/PhoneItem";
-import {renderWithRedux} from "../../testHelpers/render-redux";
+import {getTestMiddleware, renderWithRedux} from "../../testHelpers/render-redux";
+import {createStore} from "redux";
+import reducer from "../../config/reducer";
+import {composeWithDevTools} from "redux-devtools-extension/developmentOnly";
 
 describe('Phones', () => {
 
@@ -37,25 +40,46 @@ describe('Phones', () => {
     expect(await renderResult.findByText(errorMessage)).toBeTruthy();
   });
 
-  it('display the list of phones', async () => {
+  describe('the list', function () {
 
     const aPhoneOne: Phone = buildPhone({id: 1, name:"irrelevant phone 1"});
     const aPhoneTwo: Phone = buildPhone({id: 2, name:"irrelevant phone 2"});
     const aVideoList = [aPhoneOne, aPhoneTwo];
-    phoneRepositoryMock.getPhones = jest.fn(() => Promise.resolve(aVideoList));
 
-    const renderResult: RenderResult = renderWithRedux(
-      <Phones phoneRepository={phoneRepositoryMock}/>
-    );
+    it('display the list of phones', async () => {
+      phoneRepositoryMock.getPhones = jest.fn(() => Promise.resolve(aVideoList));
 
-    const phoneOneName = (await renderResult.findByText(aPhoneOne.name)).textContent;
-    const phoneTwoName = (await renderResult.findByText(aPhoneTwo.name)).textContent;
+      const renderResult: RenderResult = renderWithRedux(
+          <Phones phoneRepository={phoneRepositoryMock}/>
+      );
 
-    const videos = await renderResult.findAllByRole(PhoneItemRole);
+      const phoneOneName = (await renderResult.findByText(aPhoneOne.name)).textContent;
+      const phoneTwoName = (await renderResult.findByText(aPhoneTwo.name)).textContent;
 
-    expect(videos.length).toBe(aVideoList.length);
-    expect(phoneOneName).toEqual(aPhoneOne.name);
-    expect(phoneTwoName).toEqual(aPhoneTwo.name);
+      const videos = await renderResult.findAllByRole(PhoneItemRole);
+
+      expect(videos.length).toBe(aVideoList.length);
+      expect(phoneOneName).toEqual(aPhoneOne.name);
+      expect(phoneTwoName).toEqual(aPhoneTwo.name);
+    });
+
+    it('select an element when is clicked', async () => {
+      phoneRepositoryMock.getPhones = jest.fn(() => Promise.resolve(aVideoList));
+      const store = createStore(reducer, composeWithDevTools(getTestMiddleware()));
+
+      const renderResult: RenderResult = renderWithRedux(
+          <Phones phoneRepository={phoneRepositoryMock}/>,
+          store
+      );
+
+      const displayedPhones = await renderResult.findAllByRole(PhoneItemRole);
+      // We assume that the second item in the array is the Phone 2
+      await fireEvent.click(displayedPhones[1]);
+      expect(store.getState().phones.selectedPhone).toBe(2);
+    });
+
   });
+
+
 
 });

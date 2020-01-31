@@ -7,7 +7,7 @@ import reducer from "../config/reducer";
 import thunk from "redux-thunk";
 import {composeWithDevTools} from "redux-devtools-extension/developmentOnly";
 
-const getTestMiddleware = () => {
+export const getTestMiddleware = () => {
     return applyMiddleware(thunk);
 };
 

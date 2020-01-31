@@ -4,13 +4,14 @@ import {Phone} from "../../models/Phone";
 import {Constants} from "../../.env/environment";
 
 interface PhoneItemProps {
-    phone: Phone
+    phone: Phone,
+    onClick: (phoneId: number) => void
 }
 
 export const PhoneItemRole = 'PhoneItem';
 
-export const PhoneItem: React.FC<PhoneItemProps> = ({phone}) => (
-  <div className="PhoneItem" role={PhoneItemRole}>
+export const PhoneItem: React.FC<PhoneItemProps> = ({phone, onClick}) => (
+  <div className="PhoneItem" role={PhoneItemRole} onClick={() => onClick(phone.id)}>
       <img alt={phone.name} src={`${Constants.ASSETS_URL}/${phone.imageFileName}`}/>
       <div>{phone.name}</div>
       <div>{phone.manufacturer}</div>

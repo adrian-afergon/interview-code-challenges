@@ -8,6 +8,7 @@ import {fetchGetPhones} from "../../thunks/phone.thunk";
 import {Spinner} from "../../components/Spinner";
 import {ErrorDialog} from "../../components/ErrorDialog";
 import {PhoneItem} from "../../components/PhoneItem";
+import {selectPhone} from "../../actions/phone.actions";
 
 interface PhonesProps {
   phoneRepository: PhoneRepository
@@ -22,6 +23,7 @@ export const Phones: React.FC<PhonesProps> = ({phoneRepository}) => {
     const phones: Phone[] = Redux.useSelector((state: RootApplicationState) => state.phones.phones);
     const loading: boolean = Redux.useSelector((state: RootApplicationState) => state.phones.loading);
     const errorMessage: string | undefined = Redux.useSelector((state: RootApplicationState) => state.phones.errorMessage);
+    const handleClick = (phoneId: number) => dispatch(selectPhone(phoneId));
 
     const dispatch = Redux.useDispatch();
 
@@ -34,7 +36,7 @@ export const Phones: React.FC<PhonesProps> = ({phoneRepository}) => {
             {loading && <Spinner />}
             {errorMessage && (<>{errorMessage} <ErrorDialog>{errorMessage}</ErrorDialog></>)}
             {phones && phones.length > 0 ?
-                phones.map((phone) => <PhoneItem key={phone.id} phone={phone}/>) :
+                phones.map((phone) => <PhoneItem key={phone.id} phone={phone} onClick={handleClick} />) :
                 PhonesMessages.EMPTY_LIST
             }
         </div>
