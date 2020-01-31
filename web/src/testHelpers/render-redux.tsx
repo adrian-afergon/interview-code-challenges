@@ -12,7 +12,7 @@ const getTestMiddleware = () => {
     return applyMiddleware(thunk);
 };
 
-export const renderWithRedux = (
+export const renderWithReduxAndRouter = (
     component: JSX.Element,
     store: Store = createStore(reducer, composeWithDevTools(getTestMiddleware()))
 ): RenderResult => render(
@@ -20,5 +20,14 @@ export const renderWithRedux = (
         <BrowserRouter>
             {component}
         </BrowserRouter>
+    </Provider>
+);
+
+export const renderWithRedux = (
+    component: JSX.Element,
+    store: Store = createStore(reducer, composeWithDevTools(getTestMiddleware()))
+): RenderResult => render(
+    <Provider store={store}>
+        {component}
     </Provider>
 );

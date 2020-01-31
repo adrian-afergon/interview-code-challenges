@@ -6,7 +6,7 @@ import {Phone} from "../../models/Phone";
 import {buildPhone} from "../../testHelpers/build-phone";
 import {PhonesMessages} from "./Phones";
 import {PhoneItemRole} from "../../components/PhoneItem/PhoneItem";
-import {renderWithRedux} from "../../testHelpers/render-redux";
+import {renderWithReduxAndRouter} from "../../testHelpers/render-redux";
 
 describe('Phones', () => {
 
@@ -19,7 +19,7 @@ describe('Phones', () => {
   it('display a message when list of phones is empty', () => {
     phoneRepositoryMock.getPhones = jest.fn(() => Promise.resolve([]));
 
-    const renderResult: RenderResult = renderWithRedux(
+    const renderResult: RenderResult = renderWithReduxAndRouter(
           <Phones phoneRepository={phoneRepositoryMock}/>
     );
 
@@ -30,7 +30,7 @@ describe('Phones', () => {
     const errorMessage = 'Connection refused';
     phoneRepositoryMock.getPhones = jest.fn(() => Promise.reject(errorMessage));
 
-    const renderResult: RenderResult = renderWithRedux(
+    const renderResult: RenderResult = renderWithReduxAndRouter(
         <Phones phoneRepository={phoneRepositoryMock}/>,
     );
 
@@ -48,7 +48,7 @@ describe('Phones', () => {
       const aPhoneList = [aPhoneOne, aPhoneTwo];
       phoneRepositoryMock.getPhones = jest.fn(() => Promise.resolve(aPhoneList));
 
-      const renderResult: RenderResult = renderWithRedux(
+      const renderResult: RenderResult = renderWithReduxAndRouter(
           <Phones phoneRepository={phoneRepositoryMock}/>
       );
 
