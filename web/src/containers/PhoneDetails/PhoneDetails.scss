@@ -1,3 +1,40 @@
-.PhoneDetails{
+@import '../../variables';
 
+.PhoneDetails {
+  padding: 0.5rem;
+  background-color: $primary-color;
+  & > div {
+    background-color: $secondary-color;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  .DetailsBody {
+    padding: 2rem;
+  }
+}
+
+.MainInformation {
+  h1,
+  h2 {
+    margin: 0;
+  }
+
+  h2 {
+    color: grey;
+  }
+
+  p {
+    text-align: justify;
+  }
+}
+
+.Price {
+  float: right;
+  font-size: 24px;
+  font-weight: bold;
 }

@@ -8,7 +8,7 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 import { BrowserRouter } from 'react-router-dom';
 
-const getTestMiddleware = () => {
+export const getTestMiddleware = () => {
   return applyMiddleware(thunk);
 };
 
