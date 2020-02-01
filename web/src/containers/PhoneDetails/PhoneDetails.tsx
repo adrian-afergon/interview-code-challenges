@@ -1,28 +1,17 @@
 import * as React from 'react';
 import './PhoneDetails.scss';
-import { useParams } from 'react-router-dom';
-import { Phone } from '../../models/Phone';
-import * as Redux from 'react-redux';
-import { RootApplicationState } from '../../config/reducer';
 import { Constants } from '../../.env/environment';
-import { useEffect } from 'react';
 import { PhoneSpecifications } from '../../components/PhoneSpecifications';
 import { PhoneMainInformation } from '../../components/PhoneMainInformation';
+import { phoneRepository } from '../../repositories/PhoneRepository';
+import { useAsyncPhone } from '../hooks/use-async-phone';
 
 export enum PhoneDetailMessages {
   NOT_FOUND = "The selected Phone can't be found",
 }
 
 export const PhoneDetails: React.FC = () => {
-  const { phoneId } = useParams();
-  const phone: Phone | undefined = Redux.useSelector((state: RootApplicationState) =>
-    state.phones.phones.find((phone) => phoneId === phone.id.toString()),
-  );
-
-  useEffect(() => {
-    // TODO: In the reload the list is empty. An easy way is save the state in localStorage an retrieve it later
-  }, [phoneId]);
-
+  const { phone } = useAsyncPhone(phoneRepository);
   return (
     <div className="PhoneDetails">
       {!!phone ? (
