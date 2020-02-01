@@ -17,6 +17,6 @@ export const useAsyncPhone = (repository: PhoneRepository) => {
   React.useEffect(() => {
     if (!phone)
       dispatch(fetchGetPhones(repository.getPhones));
-  }, [phoneId]);
+  }, [phoneId, phone, repository, dispatch]);
   return {phone}
 };
