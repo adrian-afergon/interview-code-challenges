@@ -1,11 +1,18 @@
+@import '../../variables';
+
 .PhoneMainInformation{
-  h1,
-  h2 {
+  h2,
+  h3 {
     margin: 0;
   }
 
+  h3 {
+    color: $grey;
+    font-size: 24px
+  }
+
   h2 {
-    color: grey;
+    font-size: 35px;
   }
 
   p {

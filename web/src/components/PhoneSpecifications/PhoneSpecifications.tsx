@@ -15,7 +15,7 @@ export enum PhoneSpecificationsMessages {
 
 export const PhoneSpecifications: React.FC<PhoneSpecificationsProps> = ({phone: {color, screen, processor, ram}}) => (
   <div className="PhoneSpecifications">
-    <h3>Specifications</h3>
+    <h4>Specifications</h4>
     <div>
       <span>Color:</span>
       <ColorIcon color={color}/>
