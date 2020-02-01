@@ -26,20 +26,20 @@ export const PhoneDetails: React.FC = () => {
   return (
     <div className="PhoneDetails">
       {!!phone ? (
-        <div>
-          <div className="DetailsHeader">
+        <div className="details-container">
+          <div className="details-header">
             <img
               alt={phone.name}
               src={`${Constants.ASSETS_URL}/${phone.imageFileName}`}
             />
           </div>
-          <div className="DetailsBody">
+          <div className="details-body">
             <PhoneMainInformation phone={phone}/>
             <PhoneSpecifications phone={phone}/>
           </div>
         </div>
       ) : (
-        <h1>{PhoneDetailMessages.NOT_FOUND}</h1>
+        <h2>{PhoneDetailMessages.NOT_FOUND}</h2>
       )}
     </div>
   );

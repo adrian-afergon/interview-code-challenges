@@ -1,7 +1,7 @@
 @import '../../variables';
 
 .PhoneDetails {
-  padding: 0.5rem;
+  padding: 1rem;
   & > div {
     background-color: $secondary-color;
     border-radius: 5px;
@@ -12,28 +12,22 @@
     width: 100%;
   }
 
-  .DetailsBody {
-    padding: 2rem;
-  }
-}
+  .details-container {
+    display: flex;
+    flex-direction: column;
+    @media (min-width: 600px) {
+      flex-direction: row;
+    }
 
-.MainInformation {
-  h1,
-  h2 {
-    margin: 0;
   }
 
-  h2 {
-    color: grey;
+  .details-header, .details-body {
+    @media (min-width: 600px) {
+      width: 50%;
+    }
   }
 
-  p {
-    text-align: justify;
+  .details-body {
+    padding: 1.5rem;
   }
-}
-
-.Price {
-  float: right;
-  font-size: 24px;
-  font-weight: bold;
 }
