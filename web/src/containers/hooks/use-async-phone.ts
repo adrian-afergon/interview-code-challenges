@@ -8,9 +8,11 @@ import { PhoneRepository } from '../../repositories/PhoneRepository';
 
 export const useAsyncPhone = (repository: PhoneRepository) => {
   const { phoneId } = useParams();
+  // TODO: use reselect to optimize render
   const phone: Phone | undefined = Redux.useSelector((state: RootApplicationState) =>
     state.phones.phones.find((phone) => phoneId === phone.id.toString()),
   );
+  const loading = Redux.useSelector((state:RootApplicationState) => state.phones.loading);
 
   const dispatch = Redux.useDispatch();
 
@@ -18,5 +20,5 @@ export const useAsyncPhone = (repository: PhoneRepository) => {
     if (!phone)
       dispatch(fetchGetPhones(repository.getPhones));
   }, [phoneId, phone, repository, dispatch]);
-  return {phone}
+  return {phone, loading}
 };
