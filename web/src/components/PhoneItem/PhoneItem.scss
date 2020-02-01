@@ -1,3 +1,41 @@
-.PhoneItem{
+@import '../../variables.scss';
 
+.PhoneItem {
+  background-color: $white;
+  box-sizing: border-box;
+  text-align: center;
+  color: $primary-color;
+  margin: 0.5rem;
+  padding-bottom: 1rem;
+  border-radius: 5px;
+  overflow: hidden;
+  cursor: pointer;
+
+  .item-image {
+    height: 220px;
+    img {
+      object-fit: cover;
+      height: 220px;
+    }
+  }
+
+  h2,
+  h3 {
+    margin: 0;
+  }
+
+  h2 {
+    color: $black;
+  }
+
+  h3 {
+    color: $grey;
+  }
+
+  img {
+    width: 100%;
+  }
+  .price {
+    font-weight: 500;
+  }
 }
