@@ -1,12 +1,10 @@
 @import '../../variables';
 
 .PhoneDetails {
-  padding: 1rem;
-  & > div {
-    background-color: $secondary-color;
-    border-radius: 5px;
-    overflow: hidden;
-  }
+  margin: 1rem;
+  background-color: $secondary-color;
+  border-radius: 5px;
+  overflow: hidden;
 
   img {
     width: 100%;
@@ -30,4 +28,9 @@
   .details-body {
     padding: 1.5rem;
   }
+
+  .error-message {
+    text-align: center;
+  }
+
 }

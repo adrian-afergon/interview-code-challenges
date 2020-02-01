@@ -1,14 +1,14 @@
 import * as React from 'react';
 import './Header.scss';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 export const Header: React.FC<{}> = () => (
   <header className="Header">
     <div className="container menu">
-      <Link to={'/'}>
+      <NavLink to={'/'} activeClassName="is-active" exact={true}>
         <i className="icon-left-open" />
         <h1>Phone Catalogue</h1>
-      </Link>
+      </NavLink>
     </div>
   </header>
 );

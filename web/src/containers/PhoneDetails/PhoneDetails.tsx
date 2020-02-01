@@ -39,7 +39,7 @@ export const PhoneDetails: React.FC = () => {
           </div>
         </div>
       ) : (
-        <h2>{PhoneDetailMessages.NOT_FOUND}</h2>
+        <h2 className="error-message">{PhoneDetailMessages.NOT_FOUND}</h2>
       )}
     </div>
   );
