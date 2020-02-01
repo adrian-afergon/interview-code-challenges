@@ -33,7 +33,7 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "new-fc": "node_modules/.bin/hygen fc new",
-    "e2e": "node_modules/.bin/cypress open"
+    "e2e:run": "node_modules/.bin/cypress run --spec \"./cypress/integration/**.js\""
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -53,12 +53,10 @@
   "devDependencies": {
     "@storybook/react": "^5.3.9",
     "@testing-library/react": "^9.4.0",
-    "@types/puppeteer": "^2.0.0",
     "awesome-typescript-loader": "^5.2.1",
     "cypress": "^3.8.3",
     "hygen": "^5.0.3",
     "prettier": "^1.19.1",
-    "puppeteer": "^2.1.0",
     "react-docgen-typescript-loader": "^3.6.0",
     "react-docgen-typescript-webpack-plugin": "^1.1.0",
     "tslint": "^6.0.0"
