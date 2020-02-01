@@ -1,0 +1,28 @@
+@import '../../variables';
+
+.Header {
+  position: sticky;
+  top: 0;
+  background-color: $secondary-color;
+  width: 100%;
+  border-bottom: 2px solid $primary-color;
+}
+
+.container.menu {
+  padding: 1rem;
+  text-align: center;
+  i {
+    float: left;
+    font-size: 1.5rem;
+    color: $primary-color;
+  }
+  a {
+    text-decoration: none;
+    color: $primary-color;
+    font-weight: bold;
+    h1 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+  }
+}
