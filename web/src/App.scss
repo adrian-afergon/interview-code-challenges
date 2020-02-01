@@ -1,3 +1,29 @@
+@import './variables.scss';
 .App {
+
+  header {
+    background-color: $white;
+    width: 100%;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .container.menu {
+    padding: 1rem;
+    text-align: center;
+    a {
+      text-decoration: none;
+      color: $primary-color;
+      font-weight: bold;
+      h1 {
+        margin: 0;
+        font-size: 1.5rem;
+
+      }
+    }
+  }
 
 }
