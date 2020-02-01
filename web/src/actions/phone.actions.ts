@@ -1,9 +1,9 @@
 import { Phone } from '../models/Phone';
 
 export enum PhoneActionTypes {
-  GET_PHONES = 'react-redux-boilerplate/phones/GET_PHONE',
-  GET_PHONES_FULFILLED = 'react-redux-boilerplate/phones/GET_PHONE_FULFILLED',
-  GET_PHONES_REJECTED = 'react-redux-boilerplate/phones/GET_PHONE_REJECTED',
+  GET_PHONES = 'react-redux-boilerplate/phones/GET_PHONES',
+  GET_PHONES_FULFILLED = 'react-redux-boilerplate/phones/GET_PHONES_FULFILLED',
+  GET_PHONES_REJECTED = 'react-redux-boilerplate/phones/GET_PHONES_REJECTED',
 }
 
 export const getPhones = () =>
