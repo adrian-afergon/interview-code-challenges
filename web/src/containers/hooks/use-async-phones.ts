@@ -1,11 +1,11 @@
-import { PhoneRepository } from '../../repositories/PhoneRepository';
+import { phoneRepository, PhoneRepository } from '../../repositories/PhoneRepository';
 import { Phone } from '../../models/Phone';
 import * as Redux from 'react-redux';
 import { RootApplicationState } from '../../config/reducer';
 import * as React from 'react';
 import { fetchGetPhones } from '../../thunks/phone.thunk';
 
-export const useAsyncPhones = (phoneRepository: PhoneRepository) => {
+export const useAsyncPhones = (repository: PhoneRepository = phoneRepository) => {
   const phones: Phone[] = Redux.useSelector(
     (state: RootApplicationState) => state.phones.phones,
   );
@@ -19,8 +19,8 @@ export const useAsyncPhones = (phoneRepository: PhoneRepository) => {
   const dispatch = Redux.useDispatch();
 
   React.useEffect(() => {
-    dispatch(fetchGetPhones(phoneRepository.getPhones));
-  }, [phoneRepository]);
+    dispatch(fetchGetPhones(repository.getPhones));
+  }, [repository]);
 
   return {phones, loading, errorMessage}
 };
