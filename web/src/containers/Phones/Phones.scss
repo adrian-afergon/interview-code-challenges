@@ -17,4 +17,13 @@
       width: calc(100% / 4);
     }
   }
+  .empty-message {
+    background-color: $secondary-color;
+    color: $primary-color;
+    width: 100%;
+    border-radius: 5px;
+    padding: .5rem;
+    margin: .5rem 0;
+
+  }
 }

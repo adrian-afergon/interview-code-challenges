@@ -29,7 +29,8 @@ export const Phones: React.FC<PhonesProps> = ({ phoneRepository }) => {
               <PhoneItem phone={phone} />
             </Link>
           ))
-        : PhonesMessages.EMPTY_LIST}
+        : <div className="empty-message">{PhonesMessages.EMPTY_LIST}</div>
+      }
     </div>
   );
 };
