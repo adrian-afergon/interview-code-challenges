@@ -68,18 +68,21 @@ To run the web you need `node 12.13.X` installed in your computer. You have to r
 
 ```
 cd web
+npm install
 npm run start
 ```
 
 If you want to execute the unit tests:
 ```
 cd web
+npm install
 npm run test
 ```
 
 In case that you want to run the End-to-End test, remember that you need the `web` and `api` running.
 ```
 cd web
+npm install
 npm run e2e:run
 ```
 It can takes a little time.
