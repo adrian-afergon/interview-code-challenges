@@ -27,7 +27,7 @@ describe('Phones', () => {
 
   it("display an error when list of phones can't be retrieved", async () => {
     const errorMessage = 'Connection refused';
-    phoneRepositoryMock.getPhones = jest.fn(() => Promise.reject(errorMessage));
+    phoneRepositoryMock.getPhones = jest.fn(() => Promise.reject(new Error(errorMessage)));
 
     const renderResult: RenderResult = renderWithReduxAndRouter(
       <Phones phoneRepository={phoneRepositoryMock} />,

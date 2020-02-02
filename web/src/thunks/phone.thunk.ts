@@ -6,12 +6,14 @@ import {
 } from '../actions/phone.actions';
 import { Phone } from '../models/Phone';
 
-export const fetchGetPhones = (fetchPhones: () => Promise<Phone[]>) => (
+export const fetchGetPhones = (fetchPhones: () => Promise<Phone[]>) => async (
   dispatch: Dispatch,
 ) => {
   dispatch(getPhones());
-  return fetchPhones().then(
-    (phones) => dispatch(getPhonesFulfilled(phones)),
-    (error) => dispatch(getPhonesRejected(error)),
-  );
+  try {
+    const phones = await fetchPhones();
+    dispatch(getPhonesFulfilled(phones));
+  } catch(error) {
+    dispatch(getPhonesRejected(error.message));
+  }
 };
