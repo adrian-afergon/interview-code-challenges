@@ -8,7 +8,7 @@ import { PhoneRepository } from '../../repositories/PhoneRepository';
 
 export const useAsyncPhone = (repository: PhoneRepository) => {
   const { phoneId } = useParams();
-  // TODO: use reselect to optimize render
+  // Maybe we can implement reselect in the future to improve the performance
   const phone: Phone | undefined = Redux.useSelector((state: RootApplicationState) =>
     state.phones.phones.find((phone) => phoneId === phone.id.toString()),
   );
