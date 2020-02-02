@@ -19,3 +19,5 @@ re-rendered because it understand that its state changes, when truly has the sam
 If this happen an easy way to solve this problem is using the `reselect` library, recommended by `react-redux`, 
 for caching the value, and detect that is the same state, so the component would not be re-rendered, unless that we 
 request a different phone.
+
+- When we run the test coverage, the *.stories.ts are been included on the result, so it give an unreal coverage percent.

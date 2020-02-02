@@ -52,7 +52,10 @@ http://localhost:8080/phones
 
 It should display the given json file.
 
-For the web application you can try it opening ```http:localhost:3000```.
+For the web application you can try it opening: 
+```
+http:localhost:3000
+```
 
 If everything works, you should display the web application. If you display the list of phones, 
 it tell us that the application is running and calling the `api` service. However, if we display a message with text 
