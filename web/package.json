@@ -33,6 +33,7 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "new-fc": "node_modules/.bin/hygen fc new",
+    "e2e:open": "node_modules/.bin/cypress open",
     "e2e:run": "node_modules/.bin/cypress run --spec \"./cypress/integration/**.js\""
   },
   "eslintConfig": {

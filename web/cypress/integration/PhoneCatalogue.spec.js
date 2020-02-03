@@ -1,20 +1,20 @@
 describe('Phone Catalogue', () => {
-  it('display all phones', () => {
+
+  beforeEach(() => {
     cy.visit('/');
   });
 
-  it('navigate to phone details', () => {
+  it('Test all interactions', () => {
+    // navigate to phone details from phone list
     cy.get('[role="PhoneItem"]').first().click();
     cy.contains('Specifications');
-  });
 
-  it('go back to phone catalogue', () => {
+    // go back to phone catalogue
     cy.get('[role="back"]').click();
-  });
+    cy.get('[role="PhoneItem"]');
 
-  it('open directly details view without error', () => {
+    // open directly details view without error
     cy.visit('/phones/1');
     cy.contains('Specifications');
   });
-
 });
