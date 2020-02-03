@@ -37,6 +37,14 @@ Another point is use mappers in the data fetch by the api and returned by our re
 data gave by the API change, it can be handled in our Repository and we don't have to propagate the change to the other 
 layers.
 
+### Redux
+Right now I probably not use Redux in a real project, because with current React features, we can handle the application
+state easily using `useContext` and `useReducer` hooks from the original library:
+
+- [useContext](https://es.reactjs.org/docs/hooks-reference.html#usecontext)
+- [useReducer](https://es.reactjs.org/docs/hooks-reference.html#usereducer)
+
+
 ### Redux-thunk
 An easy way to handle asynchronous actions and side effects is use libraries to manage it. In this case I use redux-thunk.
 Is a good know lib recommended by `redux team`.
