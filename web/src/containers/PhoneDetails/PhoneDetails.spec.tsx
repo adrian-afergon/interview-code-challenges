@@ -28,8 +28,7 @@ describe('PhoneDetails', () => {
   it('display the phone details when information is in the state', async () => {
     const selectedPhoneId = 1;
     const aPhone = buildPhone({id: selectedPhoneId, price:10, ram: 2});
-
-    const store = createStore(reducer, composeWithDevTools(getTestMiddleware()));
+    const store = createFixtureStore();
     store.dispatch(getPhonesFulfilled([aPhone]));
 
     const renderResult: RenderResult = renderPhoneWithRouterAndReducer(
@@ -37,22 +36,24 @@ describe('PhoneDetails', () => {
       selectedPhoneId,
       store,
     );
+
     await shouldRenderDetailsWith(renderResult, aPhone);
   });
 
   it('display the phone when information not found in the state ', async () => {
     const aPhoneId = 1;
     const aPhone = buildPhone({id: aPhoneId, price: 15, ram: 2});
-
     phoneRepository.getPhones = jest.fn( () => Promise.resolve([aPhone]));
+    const store = createFixtureStore();
 
-    const store = createStore(reducer, composeWithDevTools(getTestMiddleware()));
     const renderResult = renderPhoneWithRouterAndReducer(<PhoneDetails repository={phoneRepository}/>, aPhoneId, store);
 
     await shouldRenderDetailsWith(renderResult, aPhone);
   });
 
 });
+
+const createFixtureStore = () => createStore(reducer, composeWithDevTools(getTestMiddleware()));
 
 const shouldRenderDetailsWith = async (renderResult: RenderResult, aPhone: Phone) => {
   expect(await renderResult.findByText(`${aPhone.name}`)).toBeTruthy();
