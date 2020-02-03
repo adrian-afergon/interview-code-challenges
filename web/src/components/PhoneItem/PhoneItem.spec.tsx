@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { render, fireEvent, RenderResult } from '@testing-library/react';
+import { render, RenderResult } from '@testing-library/react';
 import { PhoneItem } from './';
 import { buildPhone } from '../../testHelpers/build-phone';
-import { PhoneItemRole } from './PhoneItem';
 
 describe('PhoneItem', () => {
   it('display the phone with the specified data', () => {
